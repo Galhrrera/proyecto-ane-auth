@@ -1,0 +1,2 @@
+Formato del nombre de los archivos:
+TRACEDDMMAAAANN
