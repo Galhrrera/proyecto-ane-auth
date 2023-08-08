@@ -2,6 +2,8 @@ from dash.dependencies import Output, Input, State
 import dash
 from dash import dcc
 from dash import html
+import dash
+import dash_auth
 from pages import mediciones_page
 from pages import inicio_page
 from pages import informe_tecnico_page
@@ -9,6 +11,7 @@ from pages import informe_legal_page
 from pages import informe_final_page
 from pages import archivos_page
 from pages import linea_de_tiempo_page
+from dash.exceptions import PreventUpdate
 
 
 external_scripts_dict = [
@@ -18,8 +21,17 @@ external_scripts_dict = [
     }
 ]
 
+
 app = dash.Dash(__name__, suppress_callback_exceptions=True,
                 external_scripts=external_scripts_dict)
+
+
+auth = dash_auth.BasicAuth(
+    app,
+    {
+        'admin': 'admin'
+    }
+)
 
 # Definir el estilo CSS para los contenedores principales
 app.layout = html.Div(className="main-container", id="my-body",
@@ -107,13 +119,14 @@ app.layout = html.Div(className="main-container", id="my-body",
                                   )
                               ], className="menu-container", id="menu-container"
                           ),
+
                           # Contenido dinámico
                           html.Div(
                               id='content',
                               children=[
-                                  html.H2('Bienvenido'),
-                                  html.P(
-                                      'Selecciona una opción del menú para ver el contenido correspondiente.')
+                                #   html.H2('Bienvenido'),
+                                #   html.P(
+                                #       'Selecciona una opción del menú para ver el contenido correspondiente.')
                               ], className="content-container container"
                           )
                       ]
