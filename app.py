@@ -11,6 +11,7 @@ from pages import informe_legal_page
 from pages import informe_final_page
 from pages import archivos_page
 from pages import linea_de_tiempo_page
+from pages import escenarios_page
 from dash.exceptions import PreventUpdate
 
 
@@ -79,11 +80,11 @@ app.layout = html.Div(className="main-container", id="my-body",
                                               html.H4("Simulaciones")
                                           ], className="opt")
                                       ]),
-                                      html.A(href='/nueva-opt', className="selected", children=[
+                                      html.A(href='/escenarios', className="selected", children=[
                                           html.Div([
                                               html.I(
                                                   className="fa-solid fa-chart-area", title="Nueva Opción"),
-                                              html.H4("Nueva opción")
+                                              html.H4("Escenarios")
                                           ], className="opt")
                                       ]),
                                       html.A(href='/informe-tecnico', children=[
@@ -156,11 +157,8 @@ def display_content(pathname):
         return archivos_page.layout()
     elif pathname == '/linea-de-tiempo':
         return linea_de_tiempo_page.layout()
-    elif pathname == '/nueva-opt':
-        return html.Div([
-            html.H2('Nueva opción'),
-            html.P("Un párrafo")
-        ])
+    elif pathname == '/escenarios':
+        return escenarios_page.layout()
     else:
         return inicio_page.layout()
 
