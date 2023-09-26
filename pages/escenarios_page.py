@@ -155,46 +155,7 @@ def layout():
     ], className="escenarios-container container")
 
 def register_callbacks(app):
-    # # print("holi")
-    # # Callback para actualizar el gráfico de líneas cuando se seleccione un archivo CSV
-    # @app.callback(
-    #     dash.dependencies.Output('line-plot-escenario', 'figure'),
-    #     [dash.dependencies.Input('csv-dropdown', 'value')]
-    # )
-    # def update_line_plot(selected_csv):
-    #     # Leer los datos desde el archivo CSV seleccionado
-    #     csv_path = os.path.join(folder_path, selected_csv)
-    #     df = pd.read_csv(csv_path, delimiter=';')
-
-    #     # Obtener el nombre del archivo sin la extensión
-    #     filename_without_extension = os.path.splitext(selected_csv)[0]
-
-    #     # Crear el gráfico de líneas
-    #     fig = go.Figure(data=[go.Scatter(x=df['distancia'], y=df['potencia'], mode='lines')])
-    #     fig.update_layout(title=f'{filename_without_extension}', xaxis_title='Distancia (m)', yaxis_title='Potencia (dBm)')
-
-    #     return fig
-    
-    # # Callback para actualizar el gráfico de líneas de radioaltímetros
-    # @app.callback(
-    #     dash.dependencies.Output('line-plot-radioaltimetros', 'figure'),
-    #     [dash.dependencies.Input('csv-dropdown-radioaltimetros', 'value')]
-    # )
-    # def update_line_plot_radioaltimetros(selected_csv_radioaltimetros):
-    #     # Leer los datos desde el archivo CSV seleccionado de radioaltímetros
-    #     csv_path_radioaltimetros = os.path.join(folder_path_radioaltimetros, selected_csv_radioaltimetros)
-    #     df_radioaltimetros = pd.read_csv(csv_path_radioaltimetros, delimiter=';')
-    #     print(df_radioaltimetros)
-    #     # Obtener el nombre del archivo sin la extensión
-    #     filename_without_extension_radioaltimetros = os.path.splitext(selected_csv_radioaltimetros)[0]
-
-    #     # Crear el gráfico de líneas para radioaltímetros
-    #     fig_radioaltimetros = go.Figure(data=[go.Scatter(x=df_radioaltimetros['frecuencia'], y=df_radioaltimetros['potencia'], mode='lines')])
-    #     fig_radioaltimetros.update_layout(title=f'{filename_without_extension_radioaltimetros}', xaxis_title='Frecuencia (MHz)', yaxis_title='Potencia (dBm)')
-
-    #     return fig_radioaltimetros
-
-    # Nuevo método para actualizar el gráfico de radioaltímetros y obtener la potencia
+    # Método para actualizar el gráfico de radioaltímetros y obtener la potencia
     def update_radioaltimetros_with_slider_values(slider_distancia_value, slider_frecuencia_value, selected_csv_radioaltimetros, selected_csv_scenario):
         # Leer los datos desde el archivo CSV de radioaltímetros seleccionado
         csv_path_radioaltimetros = os.path.join(folder_path_radioaltimetros, selected_csv_radioaltimetros)
@@ -208,14 +169,19 @@ def register_callbacks(app):
         print(df_scenario.head())
 
         # Obtener el valor de potencia correspondiente a la distancia seleccionada
-        # filtered_df = df_radioaltimetros[df_radioaltimetros['distancia'] == slider_distancia_value]
-        print(slider_distancia_value)
         filtered_df = df_scenario[df_scenario['distancia']== slider_distancia_value] 
         print("filtered")
         print(filtered_df.head())
 
-        if not filtered_df.empty:
+        filtered_radioaltimetro_df = df_radioaltimetros[df_radioaltimetros['frecuencia']== slider_frecuencia_value]
+        print("filtered frecuencia")
+        print(filtered_radioaltimetro_df)
+
+        if not filtered_df.empty and not filtered_radioaltimetro_df.empty:
             potencia = filtered_df.iloc[0]['potencia']
+            poencia_radioaltimetro = filtered_radioaltimetro_df.iloc[0]['potencia']
+            # print(potencia)
+            # print(poencia_radioaltimetro)
 
                         # Obtener el nombre del archivo sin la extensión
             filename_without_extension_radioaltimetros = os.path.splitext(selected_csv_radioaltimetros)[0]
@@ -223,16 +189,15 @@ def register_callbacks(app):
             # Crear el gráfico de líneas para radioaltímetros
             fig_radioaltimetros = go.Figure(data=[go.Scatter(x=df_radioaltimetros['frecuencia'], y=df_radioaltimetros['potencia'], mode='lines')])
 
-            fig_radioaltimetros.add_trace(go.Scatter(x=[slider_frecuencia_value], y=[potencia], mode='markers', marker=dict(size=10, color='red')))
+            if poencia_radioaltimetro < potencia:
+                fig_radioaltimetros.add_trace(go.Scatter(x=[slider_frecuencia_value], y=[potencia], mode='markers', marker=dict(size=10, color='red')))
+            else:
+                fig_radioaltimetros.add_trace(go.Scatter(x=[slider_frecuencia_value], y=[potencia], mode='markers', marker=dict(size=10, color='green')))
+                
             fig_radioaltimetros.update_layout(title=f'{filename_without_extension_radioaltimetros}', xaxis_title='Frecuencia (MHz)', yaxis_title='Potencia (dBm)')
 
             return fig_radioaltimetros
 
-            # # Actualizar el gráfico de radioaltímetros
-            # fig_radioaltimetros = go.Figure(data=[go.Scatter(x=[slider_frecuencia_value], y=[potencia], mode='markers', marker=dict(size=10))])
-            # fig_radioaltimetros.update_layout(title=f'Radioaltímetros', xaxis_title='Frecuencia (MHz)', yaxis_title='Potencia (dBm)')
-
-            # return fig_radioaltimetros
         else:
             return go.Figure()
 
