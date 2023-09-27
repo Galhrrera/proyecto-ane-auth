@@ -10,6 +10,8 @@ Este proyecto se encuentra en desarrollo y tiene como objetivo crear un Gestor d
 El proyecto está desarrollado utilizando Python Dash, un framework web de código abierto que permite la construcción de aplicaciones web interactivas y analíticas con Python.
 
 ## Instrucciones de Ejecución
+
+**Este proyecto requiere Python 3.11**
 Para ejecutar el proyecto, siga los siguientes pasos:
 
 - Descargue o clone el repositorio en su máquina local.
