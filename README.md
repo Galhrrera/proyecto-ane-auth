@@ -12,6 +12,8 @@ El proyecto está desarrollado utilizando Python Dash, un framework web de códi
 ## Instrucciones de Ejecución
 
 **Este proyecto requiere Python 3.11**
+
+
 Para ejecutar el proyecto, siga los siguientes pasos:
 
 - Descargue o clone el repositorio en su máquina local.
