@@ -1,81 +1,3 @@
-# import dash
-# from dash import dcc
-# from dash import html
-# import pandas as pd
-# import plotly.graph_objs as go
-# from dash import dash_table
-# import os
-
-# # Obtener la lista de archivos CSV en la carpeta "data/escenarios/escenarios"
-# folder_path = 'data/escenarios/escenarios'
-# csv_files = [f for f in os.listdir(folder_path) if f.endswith('.csv')]
-
-# # Obtener la lista de archivos CSV en la carpeta "data/escenarios/radioaltímetros"
-# folder_path_radioaltimetros = 'data/escenarios/radioaltímetros'
-# csv_files_radioaltimetros = [f for f in os.listdir(folder_path_radioaltimetros) if f.startswith('radioaltimetro_') and f.endswith('.csv')]
-
-
-# # Inicializar la aplicación Dash
-# app = dash.Dash(__name__)
-
-# # Definir el diseño de la aplicación
-# def layout():
-#     return html.Div([
-#         html.H2('ESCENARIOS', className="content-title"),
-#         html.Div([
-#             html.P(
-#                 '''
-#                 En esta sección se encuentra la una herramienta de interacción que sirve para verificar
-#                 y validar en qué punto específicamente comienza a haber interferencia entre las 
-#                 frecuencias y potencias de los radioaltímetros y las estaciones base.
-#                 '''
-#             )
-#         ], className="escenarios-parrafo"),
-        
-#         # Dropdown para seleccionar el archivo CSV
-#         dcc.Dropdown(
-#             id='csv-dropdown',
-#             options=[{'label': file, 'value': file} for file in csv_files],
-#             value=csv_files[0]  # Establecer el primer archivo como valor predeterminado
-#         ),
-        
-#         # Gráfico de líneas
-#         dcc.Graph(id='line-plot-escenario'),
-#         # Elemento para mostrar el valor de distancia seleccionada
-#         html.Div(id='slider_distancia_value', className='slider-value'),
-
-#         # Slider para la distancia
-#         dcc.Slider(
-#             id='slide_distancia',
-#             min=0,
-#             max=1500,
-#             step=100,
-#             value=0
-#         ),
-
-#         # Elemento para mostrar el valor de frecuencia seleccionada
-#         html.Div(id='slider_frecuencia_value', className='slider-value'),
-
-#         # Slider para la frecuencia
-#         dcc.Slider(
-#             id='slide_frecuencia',
-#             min=3000,
-#             max=4500,
-#             step=100,
-#             value=3000
-#         ),
-
-#                 # Dropdown para seleccionar el archivo CSV de radioaltímetros
-#         dcc.Dropdown(
-#             id='csv-dropdown-radioaltimetros',
-#             options=[{'label': file, 'value': file} for file in csv_files_radioaltimetros],
-#             value=csv_files_radioaltimetros[0]  # Establecer el primer archivo como valor predeterminado
-#         ),
-        
-#         # Gráfico de líneas para radioaltímetros
-#         dcc.Graph(id='line-plot-radioaltimetros')
-#     ], className="escenarios-container container")
-
 import dash
 from dash import dcc
 from dash import html
@@ -180,10 +102,8 @@ def register_callbacks(app):
         if not filtered_df.empty and not filtered_radioaltimetro_df.empty:
             potencia = filtered_df.iloc[0]['potencia']
             poencia_radioaltimetro = filtered_radioaltimetro_df.iloc[0]['potencia']
-            # print(potencia)
-            # print(poencia_radioaltimetro)
-
-                        # Obtener el nombre del archivo sin la extensión
+ 
+            # Obtener el nombre del archivo sin la extensión
             filename_without_extension_radioaltimetros = os.path.splitext(selected_csv_radioaltimetros)[0]
 
             # Crear el gráfico de líneas para radioaltímetros
