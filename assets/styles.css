@@ -392,6 +392,9 @@ header {
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 30px;
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
 }
 
 .calculadora-container h2 {
@@ -401,6 +404,16 @@ header {
     text-align: center;
     color: #333333;
     /* color */
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.output-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 
