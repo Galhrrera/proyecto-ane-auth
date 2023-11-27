@@ -1,5 +1,9 @@
 #Pycache
 __pycache__
+/__pychache__
 
 /data/mediciones.zip
 /data/simulaciones.zip
+
+data/mediciones.zip
+data/simulaciones.zip
