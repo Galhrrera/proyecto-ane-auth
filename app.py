@@ -12,6 +12,7 @@ from pages import informe_final_page
 from pages import archivos_page
 from pages import linea_de_tiempo_page
 from pages import escenarios_page
+from pages import calculadora
 from dash.exceptions import PreventUpdate
 
 
@@ -115,6 +116,14 @@ app.layout = html.Div(className="main-container", id="my-body",
                                               html.H4("Archivos")
                                           ], className="opt")
                                       ]),
+                                      html.A(href='/calculadora', children=[
+                                          html.Div([
+                                              html.I(
+                                                  className='fa-solid fa-calculator', title='Calculadora'
+                                              ),
+                                              html.H4("Calculadora")
+                                          ], className='opt')
+                                      ])
                                   ],
                                       className="opts-menu"
                                   )
@@ -159,6 +168,8 @@ def display_content(pathname):
         return linea_de_tiempo_page.layout()
     elif pathname == '/escenarios':
         return escenarios_page.layout()
+    elif pathname == '/calculadora':
+        return calculadora.layout()
     else:
         return inicio_page.layout()
 

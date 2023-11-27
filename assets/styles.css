@@ -386,6 +386,23 @@ header {
     justify-content: center;
 }
 
+/* CALCULADORA */
+.calculadora-container {
+    padding-top: 45px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+}
+
+.calculadora-container h2 {
+    font-size: 25px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    text-align: center;
+    color: #333333;
+    /* color */
+}
+
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 760px) {
