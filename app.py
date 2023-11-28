@@ -201,4 +201,5 @@ if __name__ == '__main__':
     archivos_page.register_callbacks(app)
     linea_de_tiempo_page.register_callbacks(app)
     escenarios_page.register_callbacks(app)
+    calculadora.register_callbacks(app)
     app.run_server(debug=True)
