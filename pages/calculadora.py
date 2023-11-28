@@ -13,57 +13,57 @@ def layout():
             html.Div([
                 html.Label("Límite de Potencia Rx Radio Altímetro (dBm)"),
                 dcc.Input(id="limite-potencia", type="number",
-                          value=0, className="input-field"),
+                          value=-19, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label("Ancho de banda contemplado (MHz)"),
                 dcc.Input(id="ancho-banda-comtemplado", type="number",
-                          value=0, className="input-field"),
+                          value=100, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label("Frecuencia (GHz)"),
                 dcc.Input(id="frecuancia", type="number",
-                          value=0, className="input-field"),
+                          value=4.2, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label(
                     "Pérdida Cable Coaxial Antena RA: -6 dB y/o -3 dB (dB)"),
                 dcc.Input(id="perdida-cable-coaxial-antena-ra",
-                          type="number", value=0, className="input-field"),
+                          type="number", value=-3, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label("Margen Seguridad ICAO 6 dB (dB)"),
                 dcc.Input(id="margen-seguridad-icao", type="number",
-                          value=0, className="input-field"),
+                          value=6, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label("Altura AGL de la aeronave (mts)"),
                 dcc.Input(id="altura-agl-aeronave", type="number",
-                          value=0, className="input-field"),
+                          value=819, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label(
                     "Altura centro Radiante sobre el Aérodromo ARLL (mts)"),
                 dcc.Input(id="altura-centro-radiante-aeronave",
-                          type="number", value=0, className="input-field"),
+                          type="number", value=15, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Diferencia Estación a Centro (mts)"),
+                html.Label("Diferencia Estación a Centro de pista(mts)"),
                 dcc.Input(id="diferencia-estacion-centro-pista",
-                          type="number", value=0, className="input-field"),
+                          type="number", value=910, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Derivada de la Aeronave (mts)"),
+                html.Label("Deriva de la Aeronave (mts)"),
                 dcc.Input(id="derivada-aeronave", type="number",
-                          value=0, className="input-field"),
+                          value=91, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
@@ -76,26 +76,26 @@ def layout():
                 html.Label(
                     "Corrección para un tiempo del 1% IUT-R P525 6dB (dB)"),
                 dcc.Input(id="correcion-para-tiempo", type="number",
-                          value=0, className="input-field"),
+                          value=6, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label("Margen Seguridad Femtocelda u Otro (dB)"),
                 dcc.Input(id="margen-seguridad-femtocelda",
-                          type="number", value=0, className="input-field"),
+                          type="number", value=6, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label(
                     "Ganancia Antena Base Típico 15dBi - 5dBi de till = 10dB (dB)"),
                 dcc.Input(id="ganancia-antena-base", type="number",
-                          value=0, className="input-field"),
+                          value=10, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label("Pérdida de cable coaxial antena base -3 dB (dB)"),
                 dcc.Input(id="perdida-cable-coaxial-antena-base",
-                          type="number", value=0, className="input-field"),
+                          type="number", value=-3, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
         ], className='inputs'),
@@ -202,9 +202,9 @@ def calcular(limite_potencia, ancho_banda_contemplado, frecuencia, perdida_cable
 
     print("Comenzará a calcular:")
     # Realizar cálculos según las fórmulas proporcionadas
-    print(limite_potencia, ancho_banda_contemplado, log(ancho_banda_contemplado))
+    # print(limite_potencia, ancho_banda_contemplado, log(ancho_banda_contemplado))
     densidad_rx = limite_potencia - 10 * log10(ancho_banda_contemplado)
-    print(densidad_rx)
+    # print(densidad_rx)
     atenuacion_fdr = (4.2 - frecuencia) * 24 / 2.2
     diferencia_altura = max(0, altura_agl_aeronave -
                             altura_centro_radiante_aeronave)
@@ -214,9 +214,7 @@ def calcular(limite_potencia, ancho_banda_contemplado, frecuencia, perdida_cable
     if diferencia_altura == 0 or distancia_centro_aeronave == 0:
         angulo_recepcion = 0
     else:
-        angulo_recepcion = 90 - \
-            atan(diferencia_altura / distancia_centro_aeronave) * \
-            180 / pi - cabeceo_maximo_aeronave
+        angulo_recepcion = 90 - atan(diferencia_altura / distancia_centro_aeronave) * 180 / pi - cabeceo_maximo_aeronave
 
     # Check for valid input values for ganancia_antena_aeronave
     if -(12 / 45**2) * angulo_recepcion**2 + 13 < 0:
@@ -233,10 +231,10 @@ def calcular(limite_potencia, ancho_banda_contemplado, frecuencia, perdida_cable
     perdidas_espacio_libre = 32.4 + 20 * \
         log10(distancia_linea_vista * 1000) + 20 * log10(frecuencia / 1000)
 
-    pire_dbm = intensidad_senal + perdidas_espacio_libre - \
+    pire_dbm = intensidad_senal + perdidas_espacio_libre + \
         correcion_para_tiempo - margen_seguridad_femtocelda
 
-    pire_w = 10**((margen_seguridad_femtocelda - 30) / 10)
+    pire_w = 10**((pire_dbm - 30) / 10)
 
     tx_base_dbm = pire_dbm - ganancia_antena_base - perdida_cable_coaxial_antena_base
 
@@ -309,16 +307,16 @@ def register_callbacks(app):
                                                                 margen_seguridad_femtocelda, ganancia_antena_base,
                                                                 perdida_cable_coaxial_antena_base)
 
-        return f"Densidad Rx Radio Altímetro/100MHz: {densidad_rx} dBm/MHz", \
-            f"Aten. FDR del filtro del Rx 24 dB/octava: {atenuacion_fdr} dB", \
-            f"Diferencia altura Centro Radiante y AGL: {diferencia_altura} mts", \
-            f"Distancia Centro Centro radiante y Aeronave: {distancia_centro_aeronave} mts", \
-            f"Ángulo de recepción con respecto a la vertical de la Antena RA: {angulo_recepcion} Grados", \
-            f"Ganancia Antena Aeronave: {ganancia_antena_aeronave} dB", \
-            f"Intensidad de Señal en la superficie Avión: {intensidad_senal} dBm", \
-            f"Distancia Línea de vista: {distancia_linea_vista} mts", \
-            f"Pérdida por propagación en espacio libre UIT-R P525: {perdidas_espacio_libre} dB", \
-            f"PIRE (dBm): {pire_dbm} dBm", \
-            f"PIRE (W): {pire_w} W", \
-            f"Tx Base (dBm): {tx_base_dbm} dBm", \
-            f"Tx Base (W): {tx_base_w} W"
+        return f"{densidad_rx} dBm/MHz", \
+            f"{atenuacion_fdr} dB", \
+            f"{diferencia_altura} mts", \
+            f"{distancia_centro_aeronave} mts", \
+            f"{angulo_recepcion} Grados", \
+            f"{ganancia_antena_aeronave} dB", \
+            f"{intensidad_senal} dBm", \
+            f"{distancia_linea_vista} mts", \
+            f"{perdidas_espacio_libre} dB", \
+            f"{pire_dbm} dBm", \
+            f"{pire_w} W", \
+            f"{tx_base_dbm} dBm", \
+            f"{tx_base_w} W"
