@@ -34,7 +34,7 @@ def layout():
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Altura AGL de la aeronave"),
+                html.Label("Altura AGL de la aeronave (mts)"),
                 dcc.Input(id="altura-agl-aeronave", type="number", value=0, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
@@ -69,7 +69,7 @@ def layout():
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Ganancia Antena Base Típico 15dBi - 5dBi de till = 10 dB (dB) (dB)"),
+                html.Label("Ganancia Antena Base Típico 15dBi - 5dBi de till = 10dB (dB)"),
                 dcc.Input(id="ganancia-antena-base", type="number", value=0, className="input-field"),
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
@@ -102,7 +102,7 @@ def layout():
             ], className="output-container container"),
 
             html.Div([
-                html.Label("Resultado Distancia Centro Centro radiante y Aeronave"),
+                html.Label("Resultado Distancia Centro Centro radiante y Aeronave (mts)"),
                 html.Div(id="resultado-distancia-centro-radiante-aeronave", className="output-field"),
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
@@ -118,12 +118,12 @@ def layout():
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
             html.Div([
-                html.Label("Resultado Insidencia de señal en la superficie Avión"),
+                html.Label("Resultado Insidencia de señal en la superficie Avión (dBm)"),
                 html.Div(id="resultado-insidencia-señal-superficie-aeronave", className="output-field"),
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
             html.Div([
-                html.Label("Resultado Distancia Línea de vista"),
+                html.Label("Resultado Distancia Línea de vista (mts)"),
                 html.Div(id="resultado-distancia-linea-vista", className="output-field"),
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
@@ -156,3 +156,7 @@ def layout():
             ], className="output-container container")
         ], className="outputs")
     ], className="calculadora-container container")
+
+
+def register_callbacks(app):
+    return
