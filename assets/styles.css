@@ -406,15 +406,51 @@ header {
     /* color */
 }
 
-.input-container {
-    display: flex;
-    justify-content: space-between;
+
+  .input-container {
+    display: grid; 
+    grid-template-columns: 1.5fr 0.5fr 0.5fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      ". . ."; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .input-container label{
+    text-align:  left;
+  }
+
+  .output-container {
+    display: grid; 
+    grid-template-columns: 1.5fr 0.5fr 0.5fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      ". . ."; 
+      margin-top: 5px;
+      margin-bottom: 5px;
+  }
+
+  .output-container label{
+    text-align: left;
+  }
+
+  .output-field {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+.input-field {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.output-container {
-    display: flex;
-    justify-content: space-between;
+.calculadora-subtitle {
+    margin: 15px;
 }
+
 
 
 /* MEDIA QUERIES */

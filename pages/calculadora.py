@@ -8,184 +8,212 @@ from dash import html
 def layout():
     return html.Div([
         html.H2("CALCULADORA"),
+        html.H3("Entradas", className="calculadora-subtitle"),
         html.Div([
-            html.H3("Entradas"),
+            
             html.Div([
-                html.Label("Límite de Potencia Rx Radio Altímetro (dBm)"),
+                html.Label("Límite de Potencia Rx Radio Altímetro"),
                 dcc.Input(id="limite-potencia", type="number",
                           value=-19, className="input-field"),
+                html.Label("dBm", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Ancho de banda contemplado (MHz)"),
+                html.Label("Ancho de banda contemplado"),
                 dcc.Input(id="ancho-banda-comtemplado", type="number",
                           value=100, className="input-field"),
+                html.Label("MHz", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Frecuencia (GHz)"),
+                html.Label("Frecuencia"),
                 dcc.Input(id="frecuancia", type="number",
                           value=4.2, className="input-field"),
+                html.Label("GHz", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label(
-                    "Pérdida Cable Coaxial Antena RA: -6 dB y/o -3 dB (dB)"),
+                    "Pérdida Cable Coaxial Antena RA: -6 dB y/o -3 dB"),
                 dcc.Input(id="perdida-cable-coaxial-antena-ra",
                           type="number", value=-3, className="input-field"),
+                html.Label("dB", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Margen Seguridad ICAO 6 dB (dB)"),
+                html.Label("Margen Seguridad ICAO 6 dB"),
                 dcc.Input(id="margen-seguridad-icao", type="number",
                           value=6, className="input-field"),
+                html.Label("dB", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Altura AGL de la aeronave (mts)"),
+                html.Label("Altura AGL de la aeronave"),
                 dcc.Input(id="altura-agl-aeronave", type="number",
                           value=819, className="input-field"),
+                html.Label("mts", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label(
-                    "Altura centro Radiante sobre el Aérodromo ARLL (mts)"),
+                    "Altura centro Radiante sobre el Aérodromo ARLL"),
                 dcc.Input(id="altura-centro-radiante-aeronave",
                           type="number", value=15, className="input-field"),
+                html.Label("mts", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Diferencia Estación a Centro de pista(mts)"),
+                html.Label("Diferencia Estación a Centro de pista"),
                 dcc.Input(id="diferencia-estacion-centro-pista",
                           type="number", value=910, className="input-field"),
+                html.Label("mts", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Deriva de la Aeronave (mts)"),
+                html.Label("Deriva de la Aeronave"),
                 dcc.Input(id="derivada-aeronave", type="number",
                           value=91, className="input-field"),
+                html.Label("mts", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Cabeceo máximo de la aeronave ± 30º (grados)"),
+                html.Label("Cabeceo máximo de la aeronave ± 30º"),
                 dcc.Input(id="cabeceo-maximo-aeronave", type="number",
                           value=0, className="input-field"),
+                html.Label("Grados", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label(
-                    "Corrección para un tiempo del 1% IUT-R P525 6dB (dB)"),
+                    "Corrección para un tiempo del 1% IUT-R P525 6dB"),
                 dcc.Input(id="correcion-para-tiempo", type="number",
                           value=6, className="input-field"),
+                html.Label("dB", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Margen Seguridad Femtocelda u Otro (dB)"),
+                html.Label("Margen Seguridad Femtocelda u Otro"),
                 dcc.Input(id="margen-seguridad-femtocelda",
                           type="number", value=6, className="input-field"),
+                html.Label("dB", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
                 html.Label(
-                    "Ganancia Antena Base Típico 15dBi - 5dBi de till = 10dB (dB)"),
+                    "Ganancia Antena Base Típico 15dBi - 5dBi de till = 10dB"),
                 dcc.Input(id="ganancia-antena-base", type="number",
                           value=10, className="input-field"),
+                html.Label("dB", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
             html.Div([
-                html.Label("Pérdida de cable coaxial antena base -3 dB (dB)"),
+                html.Label("Pérdida de cable coaxial antena base -3 dB"),
                 dcc.Input(id="perdida-cable-coaxial-antena-base",
                           type="number", value=-3, className="input-field"),
+                html.Label("dB", className="units")
                 # Agrega más campos de entrada aquí con etiquetas y IDs correspondientes
             ], className="input-container container"),
         ], className='inputs'),
 
         # Campos de entrada
         html.Div([
-            html.H3("Salidas"),
+            html.H3("Salidas", className="calculadora-subtitle"),
             html.Div([
                 html.Label(
-                    "Resultado Densidad Rx Radio Altímetro/100MHz (dBm/MHz)"),
+                    "Resultado Densidad Rx Radio Altímetro/100MHz"),
                 html.Div(id="resultado-densidad", className="output-field"),
+                html.Label("dBm/MHz", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
 
             html.Div([
                 html.Label(
-                    "Resultado Aten. FDR del filtro del Rx 24 dB/octava (dB)"),
+                    "Resultado Aten. FDR del filtro del Rx 24 dB/octava"),
                 html.Div(id="resultado-aten-fdr", className="output-field"),
+                html.Label("dB", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
 
             html.Div([
                 html.Label(
-                    "Resultado Diferencia altura Centro Radiante y AGL (mts)"),
+                    "Resultado Diferencia altura Centro Radiante y AGL"),
                 html.Div(id="resultado-diferencia-altura",
                          className="output-field"),
+                html.Label("mts", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
 
             html.Div([
                 html.Label(
-                    "Resultado Distancia Centro Centro radiante y Aeronave (mts)"),
+                    "Resultado Distancia Centro Centro radiante y Aeronave"),
                 html.Div(id="resultado-distancia-centro-aeronave",
                          className="output-field"),
+                html.Label("mts", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
 
             html.Div([
                 html.Label(
-                    "Resultado Ángulo de recepción con respecto a la vertical de la Antena RA (Grados)"),
+                    "Resultado Ángulo de recepción con respecto a la vertical de la Antena RA"),
                 html.Div(id="resultado-angulo-recepcion",
                          className="output-field"),
+                html.Label("Grados", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
             html.Div([
-                html.Label("Resultado Ganancia Antena Aeronave (dB)"),
+                html.Label("Resultado Ganancia Antena Aeronave"),
                 html.Div(id="resultado-ganancia-antena-aeronave",
                          className="output-field"),
+                html.Label("dB", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
             html.Div([
                 html.Label(
-                    "Resultado Insidencia de señal en la superficie Avión (dBm)"),
+                    "Resultado Insidencia de señal en la superficie Avión"),
                 html.Div(id="resultado-intensidad-senal",
                          className="output-field"),
+                html.Label("dBm", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
             html.Div([
-                html.Label("Resultado Distancia Línea de vista (mts)"),
+                html.Label("Resultado Distancia Línea de vista"),
                 html.Div(id="resultado-distancia-linea-vista",
                          className="output-field"),
+                html.Label("mts", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
             html.Div([
                 html.Label(
-                    "Resultado Pérdida por propagación en espacio libre UIT-R P525 (dB)"),
+                    "Resultado Pérdida por propagación en espacio libre UIT-R P525"),
                 html.Div(id="resultado-perdidas-espacio-libre",
                          className="output-field"),
+                html.Label("dB", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
 
             html.Div([
-                html.Label("Resultado PIRE (dB)"),
+                html.Label("Resultado PIRE"),
                 html.Div(id="resultado-pire-dbm", className="output-field"),
+                html.Label("dB", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
             html.Div([
-                html.Label("Resultado PIRE (W)"),
+                html.Label("Resultado PIRE"),
                 html.Div(id="resultado-pire-w", className="output-field"),
+                html.Label("W", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
 
             html.Div([
-                html.Label("Resultado Tx Base (dBm)"),
+                html.Label("Resultado Tx Base"),
                 html.Div(id="resultado-tx-base-dbm", className="output-field"),
+                html.Label("dBm", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container"),
             html.Div([
-                html.Label("Resultado Tx Base (W)"),
+                html.Label("Resultado Tx Base"),
                 html.Div(id="resultado-tx-base-w", className="output-field"),
+                html.Label("W", className="units")
                 # Agrega más campos de salida aquí con etiquetas y IDs correspondientes
             ], className="output-container container")
         ], className="outputs"),
@@ -307,16 +335,16 @@ def register_callbacks(app):
                                                                 margen_seguridad_femtocelda, ganancia_antena_base,
                                                                 perdida_cable_coaxial_antena_base)
 
-        return f"{densidad_rx} dBm/MHz", \
-            f"{atenuacion_fdr} dB", \
-            f"{diferencia_altura} mts", \
-            f"{distancia_centro_aeronave} mts", \
-            f"{angulo_recepcion} Grados", \
-            f"{ganancia_antena_aeronave} dB", \
-            f"{intensidad_senal} dBm", \
-            f"{distancia_linea_vista} mts", \
-            f"{perdidas_espacio_libre} dB", \
-            f"{pire_dbm} dBm", \
-            f"{pire_w} W", \
-            f"{tx_base_dbm} dBm", \
-            f"{tx_base_w} W"
+        return f"{densidad_rx}", \
+            f"{atenuacion_fdr}", \
+            f"{diferencia_altura}", \
+            f"{distancia_centro_aeronave}", \
+            f"{angulo_recepcion}", \
+            f"{ganancia_antena_aeronave}", \
+            f"{intensidad_senal}", \
+            f"{distancia_linea_vista}", \
+            f"{perdidas_espacio_libre}", \
+            f"{pire_dbm}", \
+            f"{pire_w}", \
+            f"{tx_base_dbm}", \
+            f"{tx_base_w}"
