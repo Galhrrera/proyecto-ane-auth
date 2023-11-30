@@ -1,4 +1,4 @@
-from math import atan, log, log10, pi, sqrt
+from math import atan, log, log10, pi, sqrt, ceil
 from dash.dependencies import Output, Input, State
 import dash
 from dash import dcc
@@ -228,14 +228,10 @@ def calcular(limite_potencia, ancho_banda_contemplado, frecuencia, perdida_cable
              correcion_para_tiempo, margen_seguridad_femtocelda, ganancia_antena_base,
              perdida_cable_coaxial_antena_base):
 
-    print("Comenzará a calcular:")
-    # Realizar cálculos según las fórmulas proporcionadas
-    # print(limite_potencia, ancho_banda_contemplado, log(ancho_banda_contemplado))
     densidad_rx = limite_potencia - 10 * log10(ancho_banda_contemplado)
-    # print(densidad_rx)
+
     atenuacion_fdr = (4.2 - frecuencia) * 24 / 2.2
-    diferencia_altura = max(0, altura_agl_aeronave -
-                            altura_centro_radiante_aeronave)
+    diferencia_altura = max(0, altura_agl_aeronave - altura_centro_radiante_aeronave)
     distancia_centro_aeronave = diferencia_estacion_centro_pista - derivada_aeronave
 
     # Check for valid input values for arctangent
@@ -268,15 +264,9 @@ def calcular(limite_potencia, ancho_banda_contemplado, frecuencia, perdida_cable
 
     tx_base_w = 10**((tx_base_dbm - 30) / 10)
 
-    print("resultados:")
-
-    print(densidad_rx, atenuacion_fdr, diferencia_altura, distancia_centro_aeronave, angulo_recepcion, \
-        ganancia_antena_aeronave, intensidad_senal, distancia_linea_vista, perdidas_espacio_libre, \
-        pire_dbm, pire_w, tx_base_dbm, tx_base_w)
-
-    return densidad_rx, atenuacion_fdr, diferencia_altura, distancia_centro_aeronave, angulo_recepcion, \
-        ganancia_antena_aeronave, intensidad_senal, distancia_linea_vista, perdidas_espacio_libre, \
-        pire_dbm, pire_w, tx_base_dbm, tx_base_w
+    return round(densidad_rx), round(atenuacion_fdr), round(diferencia_altura), round(distancia_centro_aeronave), ceil(angulo_recepcion), \
+        ceil(ganancia_antena_aeronave), ceil(intensidad_senal), round(distancia_linea_vista), round(perdidas_espacio_libre), \
+        round(pire_dbm), round(pire_w), round(tx_base_dbm), round(tx_base_w)
 
 
 def register_callbacks(app):
