@@ -383,7 +383,51 @@ def register_callbacks(app):
                 margen_seguridad_femtocelda = 0
                 ganancia_antena_base = 10
                 perdida_cable_coaxial_antena_base = -3
-            
+            elif value == "3.35/3.45":
+                limite_potencia_rx_radio_altimetro = -47.8
+                ancho_banda_contemplado = 100
+                frecuencia = 3.45
+                perdida_cable_coaxial_antena_ra = -3
+                margen_seguridad_icao = 6
+                altura_agl_aeronave = 61
+                altura_centro_radiante_aerodromo = 15
+                distancia_estacion_centro_pista = 910
+                deriva_aeronave = 10
+                cabeceo_maximo_aeronave = 5
+                correccion_tiempo_1_pct = 6
+                margen_seguridad_femtocelda = 0
+                ganancia_antena_base = 10
+                perdida_cable_coaxial_antena_base = -3
+            elif value == "3.45/3.55":
+                limite_potencia_rx_radio_altimetro = -48.9
+                ancho_banda_contemplado = 100
+                frecuencia = 3.55
+                perdida_cable_coaxial_antena_ra = -3
+                margen_seguridad_icao = 6
+                altura_agl_aeronave = 61
+                altura_centro_radiante_aerodromo = 15
+                distancia_estacion_centro_pista = 910
+                deriva_aeronave = 10
+                cabeceo_maximo_aeronave = 5
+                correccion_tiempo_1_pct = 6
+                margen_seguridad_femtocelda = 0
+                ganancia_antena_base = 10
+                perdida_cable_coaxial_antena_base = -3
+            elif value == "3.55/3.65":
+                limite_potencia_rx_radio_altimetro = -50
+                ancho_banda_contemplado = 100
+                frecuencia = 3.65
+                perdida_cable_coaxial_antena_ra = -3
+                margen_seguridad_icao = 6
+                altura_agl_aeronave = 61
+                altura_centro_radiante_aerodromo = 15
+                distancia_estacion_centro_pista = 910
+                deriva_aeronave = 10
+                cabeceo_maximo_aeronave = 5
+                correccion_tiempo_1_pct = 6
+                margen_seguridad_femtocelda = 0
+                ganancia_antena_base = 10
+                perdida_cable_coaxial_antena_base = -3
         
         return html.Div([
                 html.H2("CALCULADORA"),
