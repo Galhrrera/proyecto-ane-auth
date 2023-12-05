@@ -63,9 +63,13 @@ def calcular(limite_potencia, ancho_banda_contemplado, frecuencia, perdida_cable
 
     tx_base_w = 10**((tx_base_dbm - 30) / 10)
 
-    return round(densidad_rx), round(atenuacion_fdr), round(diferencia_altura), round(distancia_centro_aeronave), ceil(angulo_recepcion), \
-        ceil(ganancia_antena_aeronave), ceil(intensidad_senal), round(distancia_linea_vista), round(perdidas_espacio_libre), \
-        round(pire_dbm), round(pire_w), round(tx_base_dbm), round(tx_base_w)
+    return round(densidad_rx,2), round(atenuacion_fdr,2), round(diferencia_altura,2), round(distancia_centro_aeronave,2), round(angulo_recepcion,2), \
+        round(ganancia_antena_aeronave,2), round(intensidad_senal,2), round(distancia_linea_vista,2), round(perdidas_espacio_libre,2), \
+        round(pire_dbm,2), round(pire_w,2), round(tx_base_dbm,2), round(tx_base_w,2)
+
+    # return round(densidad_rx,2), round(atenuacion_fdr,2), round(diferencia_altura,2), round(distancia_centro_aeronave,2), ceil(angulo_recepcion), \
+    #     ceil(ganancia_antena_aeronave), ceil(intensidad_senal), round(distancia_linea_vista,2), round(perdidas_espacio_libre,2), \
+    #     round(pire_dbm,2), round(pire_w,2), round(tx_base_dbm,2), round(tx_base_w,2)
 
 
 def register_callbacks(app):
