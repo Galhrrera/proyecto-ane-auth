@@ -367,6 +367,8 @@ def register_callbacks(app):
         margen_seguridad_femtocelda = 0
         ganancia_antena_base = 0
         perdida_cable_coaxial_antena_base = 0
+
+        print(tab, value)
         if tab == "UPB  UIT-R M.2059":
             if value == "< 3.35":
                 limite_potencia_rx_radio_altimetro = -46.7
@@ -469,6 +471,113 @@ def register_callbacks(app):
                 distancia_estacion_centro_pista = 400
                 deriva_aeronave = 91
                 cabeceo_maximo_aeronave = 30
+                correccion_tiempo_1_pct = 6
+                margen_seguridad_femtocelda = 0
+                ganancia_antena_base = 10
+                perdida_cable_coaxial_antena_base = -3
+        elif tab == "UPB  AVSI Vol":
+            if value == "Cat. 1":
+                limite_potencia_rx_radio_altimetro = -19
+                ancho_banda_contemplado = 100
+                frecuencia = 3.75
+                perdida_cable_coaxial_antena_ra = -3
+                margen_seguridad_icao = 0
+                altura_agl_aeronave = 61
+                altura_centro_radiante_aerodromo = 15
+                distancia_estacion_centro_pista = 910
+                deriva_aeronave = 10
+                cabeceo_maximo_aeronave = 0
+                correccion_tiempo_1_pct = 6
+                margen_seguridad_femtocelda = 0
+                ganancia_antena_base = 10
+                perdida_cable_coaxial_antena_base = -3
+            elif value == "Cat. 2":
+                limite_potencia_rx_radio_altimetro = -56
+                ancho_banda_contemplado = 100
+                frecuencia = 3.75
+                perdida_cable_coaxial_antena_ra = -3
+                margen_seguridad_icao = 0
+                altura_agl_aeronave = 61
+                altura_centro_radiante_aerodromo = 15
+                distancia_estacion_centro_pista = 910
+                deriva_aeronave = 10
+                cabeceo_maximo_aeronave = 0
+                correccion_tiempo_1_pct = 6
+                margen_seguridad_femtocelda = 0
+                ganancia_antena_base = 10
+                perdida_cable_coaxial_antena_base = -3
+            elif value == "Cat. 3":
+                limite_potencia_rx_radio_altimetro = -48
+                ancho_banda_contemplado = 100
+                frecuencia = 3.75
+                perdida_cable_coaxial_antena_ra = -3
+                margen_seguridad_icao = 0
+                altura_agl_aeronave = 61
+                altura_centro_radiante_aerodromo = 15
+                distancia_estacion_centro_pista = 910
+                deriva_aeronave = 10
+                cabeceo_maximo_aeronave = 0
+                correccion_tiempo_1_pct = 6
+                margen_seguridad_femtocelda = 0
+                ganancia_antena_base = 10
+                perdida_cable_coaxial_antena_base = -3
+        elif tab == "UPB  AVSI Vol. III":
+            if value == "< 3.35":
+                limite_potencia_rx_radio_altimetro = -49
+                ancho_banda_contemplado = 100
+                frecuencia = 3.5
+                perdida_cable_coaxial_antena_ra = -3
+                margen_seguridad_icao = 0
+                altura_agl_aeronave = 61
+                altura_centro_radiante_aerodromo = 15
+                distancia_estacion_centro_pista = 910
+                deriva_aeronave = 10
+                cabeceo_maximo_aeronave = 0
+                correccion_tiempo_1_pct = 6
+                margen_seguridad_femtocelda = 0
+                ganancia_antena_base = 10
+                perdida_cable_coaxial_antena_base = -3
+            elif value == "3.35/3.45":
+                limite_potencia_rx_radio_altimetro = -61
+                ancho_banda_contemplado = 100
+                frecuencia = 3.5
+                perdida_cable_coaxial_antena_ra = -3
+                margen_seguridad_icao = 0
+                altura_agl_aeronave = 61
+                altura_centro_radiante_aerodromo = 15
+                distancia_estacion_centro_pista = 910
+                deriva_aeronave = 10
+                cabeceo_maximo_aeronave = 0
+                correccion_tiempo_1_pct = 6
+                margen_seguridad_femtocelda = 0
+                ganancia_antena_base = 10
+                perdida_cable_coaxial_antena_base = -3
+            elif value == "3.45/3.55":
+                limite_potencia_rx_radio_altimetro = -64
+                ancho_banda_contemplado = 100
+                frecuencia = 3.5
+                perdida_cable_coaxial_antena_ra = -3
+                margen_seguridad_icao = 0
+                altura_agl_aeronave = 61
+                altura_centro_radiante_aerodromo = 15
+                distancia_estacion_centro_pista = 910
+                deriva_aeronave = 10
+                cabeceo_maximo_aeronave = 0
+                correccion_tiempo_1_pct = 6
+                margen_seguridad_femtocelda = 0
+                ganancia_antena_base = 10
+                perdida_cable_coaxial_antena_base = -3
+            elif value == "3.55/3.65":
+                limite_potencia_rx_radio_altimetro = -67
+                ancho_banda_contemplado = 100
+                frecuencia = 3.5
+                perdida_cable_coaxial_antena_ra = -3
+                margen_seguridad_icao = 0
+                altura_agl_aeronave = 61
+                altura_centro_radiante_aerodromo = 15
+                distancia_estacion_centro_pista = 910
+                deriva_aeronave = 10
+                cabeceo_maximo_aeronave = 0
                 correccion_tiempo_1_pct = 6
                 margen_seguridad_femtocelda = 0
                 ganancia_antena_base = 10
